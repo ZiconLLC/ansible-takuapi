@@ -31,7 +31,7 @@
 	{% endfor %}
 	],
 	"redisStream" : [
-	{%- for nodein api_taku_redis_stream_hosts -%}
+	{%- for node in api_taku_redis_stream_hosts -%}
 		{% if loop.index0 > 0 %},{% endif %}
 		{
 			"host" : "{{ node.host }}:6379",
