@@ -1,0 +1,29 @@
+
+api_taku_user: taku
+api_taku_group: taku
+
+api_taku_install_dir: /opt
+api_taku_config_dir: /etc/takuapi
+api_taku_build_dir: /tmp
+api_taku_log_dir: /var/log/takuapi
+
+api_taku_version: master
+
+#api_taku_github_keyfile: /root/.ssh/provision/taku-aws-api
+api_taku_go_version: 1.4.2
+
+api_taku_service_name: takuapi
+
+api_taku_config_environment: production
+api_taku_config_port: 3000
+
+api_taku_redis_hosts:
+  - host: "127.0.0.1"
+    primary: true
+
+api_taku_redis_stream_hosts:
+  - host: "127.0.0.1"
+    primary: true
+
+api_taku_kafka_hosts:
+  - 127.0.0.1

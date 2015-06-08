@@ -1,0 +1,6 @@
+---
+
+- name: restart takuapi
+  runit: name={{ api_taku_service_name }} state=up timeout=9 action=restart
+  when: not takuapi_service_status.restarted
+

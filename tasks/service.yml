@@ -1,0 +1,14 @@
+---
+
+- name: service - setup and run
+  runit:
+    name: "{{ api_taku_service_name }}"
+    enabled: yes
+    state: up
+    timeout: 10
+    user: "{{ api_taku_user }}"
+    command: "{{ api_taku_install_dir }}/cave/cave -config {{ api_taku_config_dir }}/config.json"
+    env_vars:
+      GOMAXPROCS: "{{ansible_processor_cores + 1}}"
+  register: takuapi_service_status
+

@@ -1,0 +1,9 @@
+---
+- hosts: all
+  sudo: true
+
+  vars:
+    api_taku_github_keyfile: ~/.ssh/provision/taku-aws-api
+    api_taku_keyfile_local: ~/.ssh/taku/provision/taku-aws-api
+  roles:
+    - role: api-taku

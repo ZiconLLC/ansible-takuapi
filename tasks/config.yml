@@ -1,0 +1,43 @@
+---
+
+- name: install - create group
+  group:
+    name={{ api_taku_group }}
+    system=yes
+
+- name: install - create user
+  user:
+    name={{ api_taku_user }}
+    group={{ api_taku_group }}
+    system=yes
+    createhome=no
+
+- name: config - create config dir
+  file:
+    state=directory
+    path={{ api_taku_config_dir }}
+    mode=755
+    owner={{ api_taku_user }}
+    group={{ api_taku_group }}
+
+- name: config - create log dir
+  file:
+    state=directory
+    path={{ api_taku_log_dir }}
+    mode=0755
+    owner={{ api_taku_user }}
+    group={{ api_taku_group }}
+
+- name: config - logconf
+  template:
+    src=logconf.xml.j2
+    dest={{ api_taku_config_dir }}/logconf.xml
+    owner={{ api_taku_user }}
+    group={{ api_taku_group }}
+  notify: restart takuapi
+
+- name: config - config.json
+  template:
+    src=config.json.j2
+    dest={{ api_taku_config_dir }}/config.json
+  notify: restart takuapi

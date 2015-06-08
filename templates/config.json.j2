@@ -1,0 +1,49 @@
+{
+	"app" : {
+		"environment" : "{{ api_taku_config_environment }}",
+		"name" : "api-cave"
+	},
+	"port" : {{ api_taku_config_port  }},
+	"resourceRoot" : "",
+	"search" : {
+		"imagesPerSearch" : 30,
+		"safeSearch" : "high"
+	},
+	"traceMessagePath" : "{{ api_taku_log_dir }}/trace.log",
+	"loggingConfigPath" : "{{ api_taku_config_dir }}/logconf.xml",
+	"redisHosts" : [
+	{%- for node in api_taku_redis_hosts -%}
+		{% if loop.index0 > 0 %},{% endif %}
+		{
+			"host" : "{{ node.host }}:6379",
+			"primary" : {{ (node.primary | ternary('true', 'false'))|lower }}
+			
+		}
+	{% endfor %}
+	],
+	"redisImages" : [
+	{%- for node in api_taku_redis_hosts -%}
+		{% if loop.index0 > 0 %},{% endif %}
+		{
+			"host" : "{{ node.host }}:6379",
+			"primary" : {{ (node.primary | ternary('true', 'false'))|lower }}
+		}
+	{% endfor %}
+	],
+	"redisStream" : [
+	{%- for nodein api_taku_redis_stream_hosts -%}
+		{% if loop.index0 > 0 %},{% endif %}
+		{
+			"host" : "{{ node.host }}:6379",
+			"primary" : {{ (node.primary | ternary('true', 'false'))|lower }}
+		}
+	{% endfor %}
+	],
+	"kafkaHosts" : [
+	{% for host in api_taku_kafka_hosts %}
+	{% if loop.index0 > 0 %},{% endif %}
+	"{{ host }}:9092"
+	{% endfor %}
+	]
+}
+
