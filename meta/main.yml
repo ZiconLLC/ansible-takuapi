@@ -1,6 +1,6 @@
 ---
 dependencies: 
-  - role : gotansible.runit 
+  - role: gotansible.runit 
   - role: gotansible.gobuild
     gobuild_repo_url: "ssh://git@github.com/ZiconLLC/cave.git"
     gobuild_project_path: github.com/ziconllc/cave
@@ -11,6 +11,7 @@ dependencies:
     gobuild_keyfile_local: "{{ api_taku_keyfile_local }}"
     gobuild_commands:
       - make install
+      - sudo sv stop takuapi
 
 galaxy_info:
   author: Franklin Wise
