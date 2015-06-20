@@ -4,7 +4,7 @@
   runit:
     name: "{{ api_taku_service_name }}"
     enabled: yes
-    state: up
+    state: start
     timeout: 10
     user: "{{ api_taku_user }}"
     command: "{{ api_taku_install_dir }}/cave/cave -config {{ api_taku_config_dir }}/config.json"
