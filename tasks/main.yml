@@ -9,3 +9,9 @@
 - name: service
   include: service.yml
 
+- name: explicit service restart
+  notify: restart takuapi
+  when: api_taku_service_restart
+
+
+
