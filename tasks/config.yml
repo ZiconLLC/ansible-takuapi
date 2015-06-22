@@ -1,11 +1,11 @@
 ---
 
-- name: install - create group
+- name: config - create group
   group:
     name={{ api_taku_group }}
     system=yes
 
-- name: install - create user
+- name: config - create user
   user:
     name={{ api_taku_user }}
     group={{ api_taku_group }}
