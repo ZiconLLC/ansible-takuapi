@@ -1,16 +1,24 @@
 ---
 
 - name: dependencies
+  tags:
+    - install
   include: depend.yml
 
 - name: configure
+  tags:
+    - config
   include: config.yml
 
 - name: service
+  tags:
+    - service
   include: service.yml
 
 - name: explicit service restart
   shell: echo "restart takuapi"
+  tags:
+    - service
   notify: restart takuapi
   when: api_taku_service_restart
 

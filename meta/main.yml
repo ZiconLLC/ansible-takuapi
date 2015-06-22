@@ -2,6 +2,8 @@
 dependencies: 
   - role: gotansible.runit 
   - role: gotansible.gobuild
+    tags:
+      - install
     gobuild_repo_url: "ssh://git@github.com/ZiconLLC/cave.git"
     gobuild_project_path: github.com/ziconllc/cave
     gobuild_deploy_dest: "{{ api_taku_install_dir }}"
