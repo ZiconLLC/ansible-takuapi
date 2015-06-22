@@ -10,6 +10,7 @@
   include: service.yml
 
 - name: explicit service restart
+  shell: echo "restart takuapi"
   notify: restart takuapi
   when: api_taku_service_restart
 
